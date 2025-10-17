@@ -43,7 +43,12 @@ int main(){
     int myArray[100];
     int *pInt = &(myArray[5]);
     int *pInt2 = &(myArray[10]);
-    cout<<pInt<<"  "<<pInt2<<endl;
+    cout<<pInt<<" && "<<pInt2<<endl;
     cout<<pInt2-pInt<<endl;
+    //!The difference between the memory locations is not 5 indeed. But in
+    //!pointer arithmetic it is… Every object takes a space in memory. A
+    //!single int is 32 bits (4 bytes) in memory. So 5 ints make 20 bytes
+    //!which is 14 (38 – 24) in hexadecimal representation.
+    cout<<"Bytes between them: "<<(char*)pInt2 - (char*)pInt<<endl;
     return 0;
 }

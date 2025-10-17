@@ -13,7 +13,7 @@ int main(){
     cout<<*ptr<<endl;
     ptr2 = &b; //? it will be possible but
     //! *ptr2 = 1; it is not possible
-//? int* - pointer to int */
+ //? int* - pointer to int */
  //? int const * - pointer to const int */
  //? int *const - const pointer to int */
  //? int const *const - const pointer to const int */
