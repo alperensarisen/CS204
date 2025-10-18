@@ -21,7 +21,8 @@ int main(){
     node *head = new node();
     node* second = new node();
     node* third = new node();
-
+    node* fourth = new node();
+    
     head->data=10;
     head->next = second;
     
@@ -29,7 +30,10 @@ int main(){
     second->next = third;
 
     third->data = 30;
-    third->next = nullptr;
+    third->next = fourth;
+
+    fourth->data = 50;
+    fourth->next = nullptr;
 
     node *temp = head;
     while(temp != nullptr){
