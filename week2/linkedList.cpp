@@ -14,6 +14,7 @@ struct node {
     
     //default constructor
     node(){}
+    node(int d, node* n):data(d),next(n){}
     //constructor
     //node(string w, int n):word(w),num(n){}
 };
@@ -40,6 +41,8 @@ int main(){
         cout<<temp->data<<endl;
         temp = temp->next;
     }
+    
+
     //! [10] -> [20] -> [30] -> NULL
     return 0;
 }
