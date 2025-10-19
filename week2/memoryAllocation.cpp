@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
-int main(){
+extern int e_var;
+void printVar(){
+  cout<< "Count in real defined file: "<<e_var<<endl;
+}
     //!Automatic (ordinary) variables(STACK MEMORY): 
     /*
       -It is stores in stack part of memory.
@@ -15,7 +18,6 @@ int main(){
       -You usually use a pointer to access them.
 
       int* p = new int[100]; //!This code allocate memory for 100 integer in HEAP
-   
    */
-    return 0;
-}
+   //!Programmer should use delete to release space when it is no longer needed.
+    
