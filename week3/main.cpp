@@ -3,7 +3,7 @@
 using namespace std;
 int main(){
     linkedlist list;
-
+    //!TYPEDEF
     list.addToBeginning(40);
     list.addToBeginning(30);
     list.addToBeginning(20);
