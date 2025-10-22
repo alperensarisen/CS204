@@ -1,37 +1,35 @@
-#include <iostream>
+#include "linkedlist.h"
 using namespace std;
-
-struct node
-{
-    int data;
-    node *next;
-    node(){}
-    node(int d, node * n):data(d),next(n){}
-    //!Constructor with 2 parameter.
-};
-node* Add2End(node *tail,int id){
-    node *nn = new node(id,nullptr);
-    tail->next = nn;
-    return nn;
-    //?This added the new id to the end of the list, 
-    //?but now tail also needs updating – how?
-    //?we could return the new tail from the function: 
-    //?node *Add2End(node * tail, int id) 
-    //?and let the caller do the update
-    //?or we could make tail a reference parameter and update it here…
-    //?but we left it as it is right now
+linkedlist::linkedlist(){
+    head = nullptr;
 }
-int main(){
-    node *head = new node(10,nullptr);
-    node *tail = head;
-
-    tail = Add2End(tail,20);
-    tail = Add2End(tail,30);
-    tail = Add2End(tail,40);
+void linkedlist::addToBeginning (int n){
+    node *ptr = new node(n,head);
+    head = ptr;
+}
+void linkedlist::pritlist(){
     node *temp = head;
     while(temp != nullptr){
-        cout << temp->data << " ";
+        cout<<temp->data<<" ";
         temp = temp->next;
     }
-    return 0;
+    cout<<endl;
+}
+node *linkedlist::deletepoint(int deleted){
+    node *temp = head;
+    node *dlt;
+    if(head->data == deleted){
+        dlt = head;
+        head = head->next;
+        delete dlt;
+        return head;
+    }
+    while(temp->next != nullptr && temp->next->data != deleted){
+        temp = temp->next;
+    }
+    dlt = temp->next;
+    
+    temp->next = dlt->next;
+    delete dlt;
+    return head;
 }
