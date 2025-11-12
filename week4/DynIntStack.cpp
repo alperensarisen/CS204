@@ -20,13 +20,15 @@ void DynIntStack::push(int num){
         top = newnode;
     }
 }
-void DynIntStack::pop(int &num){
+void DynIntStack::pop(int &num)
+{
     StackNode *temp;
     if(isEmpty()){
         cout<<"The Stack is empty!\n";
     }
-    else//! pop value off top stack
+    else
     {
+        //! pop value off top stack
         num = top->value;
         temp = top->next;
         delete top;
@@ -35,8 +37,5 @@ void DynIntStack::pop(int &num){
     }
 }
 bool DynIntStack::isEmpty(void){
-    bool status;
-    if(top==nullptr) status = true;
-    else status = false;
-    return status;
+    return top==nullptr;
 }
