@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
+#include <iomanip>  
 #include <fstream>
 #include <sstream>
 #include <vector>
 using namespace std;
 
 int main(){
+    cout << fixed << setprecision(10);
     ifstream file;
     string file_name;
     string line;
@@ -20,8 +22,8 @@ int main(){
 
 
     int line_num = 1;
-    int size_x, size_y, size_z; //! the sizes 3D of the tensor
-    double target_sum,value; 
+    int size_x, size_y, size_z;         //! the sizes 3D of the tensor
+    long double target_sum,value; 
     int num_elemets;
     int cor_x,cor_y,cor_z;
     while(getline(file,line)){
@@ -45,13 +47,13 @@ int main(){
         };
         line_num++;
     }
-    vector<vector<vector<double>>> vec(size_x, vector<vector<double>>(size_y, vector<double>(size_z, 0)));
+    vector<vector<vector<long double>>> vec(size_x, vector<vector<long double>>(size_y, vector<long double>(size_z, 0)));
     for(int element = 0; element < lines.size(); element++){
         stringstream ss(lines[element]);
         ss>>cor_x>>cor_y>>cor_z>>value;
         vec[cor_x][cor_y][cor_z]=value;
     }
-    
+    cout<<vec[10][8][7];
     file.close();
     return 0;
 }
