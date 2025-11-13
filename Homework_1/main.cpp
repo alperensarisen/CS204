@@ -55,6 +55,9 @@ int main(){
     }
     
     file.close();
+    //! It is not a best solution of this homework, since it requires to much time and memory
+    //! Therefore I recomend to you compile this code with "-O2 or -O1" parameter to increase 
+    //! efficiency :) (g++ -O2 main.cpp) (g++ -O1 main.cpp)
     long long count = 0;
 
     for (int x1 = 0; x1 < size_x; x1++) {
@@ -71,7 +74,7 @@ int main(){
                                     for (int k = z1; k <= z2; k++)
                                         sum += vec[i][j][k];
 
-                            if (sum == target_sum)   // doğrudan eşitlik kontrolü
+                            if (sum == target_sum) 
                                 count++;
                         }
                     }
