@@ -53,7 +53,34 @@ int main(){
         ss>>cor_x>>cor_y>>cor_z>>value;
         vec[cor_x][cor_y][cor_z]=value;
     }
-    cout<<vec[10][8][7];
+    
     file.close();
+    long long count = 0;
+
+    for (int x1 = 0; x1 < size_x; x1++) {
+        for (int y1 = 0; y1 < size_y; y1++) {
+            for (int z1 = 0; z1 < size_z; z1++) {
+                for (int x2 = x1; x2 < size_x; x2++) {
+                    for (int y2 = y1; y2 < size_y; y2++) {
+                        for (int z2 = z1; z2 < size_z; z2++) {
+
+                            long double sum = 0.0;
+
+                            for (int i = x1; i <= x2; i++)
+                                for (int j = y1; j <= y2; j++)
+                                    for (int k = z1; k <= z2; k++)
+                                        sum += vec[i][j][k];
+
+                            if (sum == target_sum)   // doğrudan eşitlik kontrolü
+                                count++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    cout << count << endl;
+
     return 0;
 }
