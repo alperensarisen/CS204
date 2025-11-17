@@ -31,6 +31,8 @@ class LinkedList{
         ~LinkedList();
         void printlist() const;
         void addToBeginning(int n);
+        void deletelist();
+        LinkedList & operator = (const LinkedList & rhs); //! Assigment Operator
         node *create_clone() const;
 };
 LinkedList::LinkedList(){
@@ -46,6 +48,10 @@ LinkedList::~LinkedList(){
 }
 void LinkedList::printlist() const{
     node *temp = head;
+    if(head == nullptr){
+        cout<<"Empty list"<<endl;
+        return;
+    }
     while(temp){
         cout<<temp->value<<" ";
         temp = temp->next;
@@ -56,6 +62,16 @@ void LinkedList::addToBeginning(int val){
     node *n = new node(val,head);
     head = n;
     size++;
+}
+void LinkedList::deletelist(){
+    node *temp = head;
+    while(head){
+        node* nextNode = temp->next;
+        delete temp;
+        temp = nextNode;
+    }
+    head = nullptr;
+    size = 0;
 }
 node* LinkedList::create_clone() const{
     if(head == nullptr) return nullptr; //* if list is empty, clone is empty as well
@@ -70,6 +86,14 @@ node* LinkedList::create_clone() const{
     }
     return cloneHead;
 }
+LinkedList & LinkedList::operator=(const LinkedList & rhs){
+    if(this != &rhs){
+        deletelist();
+        head = rhs.create_clone();
+        size = rhs.size;
+    }
+    return *this;
+}
 int main(){
     LinkedList list1;
     list1.addToBeginning(1);  
@@ -79,7 +103,8 @@ int main(){
     LinkedList list2;
     list2 = list1;
     list2.printlist();
-
+    list2.deletelist();
+    list2.printlist();
 
     /*A a(3);
     A b = a;
