@@ -1,9 +1,12 @@
 #ifndef PLAYLIST_H_
 #define PLAYLIST_H_
 #include "song.h"
+
 #include<iosfwd>
 class playList{
+    friend class Iterator;
     private:
+        
         struct node{
             Song data;
             node *next;

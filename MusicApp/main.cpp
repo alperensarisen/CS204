@@ -1,9 +1,15 @@
 #include "playList.h"
 #include "song.h"
+#include "iterator.h"
 #include <iostream>
 #include <string>
 using namespace std;
-
+void printList(const playList & list){
+    Iterator itr(list);
+    for(itr.Init();itr.HasMore();itr.next()){
+        cout<<itr.current()<<endl;
+    }
+}
 int main(){
     playList myPlayList;
     myPlayList += Song("I wanna be yours","Arctic Monkeys");
@@ -20,7 +26,7 @@ int main(){
     if(archive == AllSongs){
         cout<<"All songs already archived"<<endl;
     }
-
+    printList(myPlayList);
     return 0;
     
 }
