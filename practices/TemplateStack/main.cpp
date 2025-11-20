@@ -8,6 +8,7 @@ struct node{
     node<itemType> *next;
     node<itemType>(itemType v, node<itemType> *n):value(v),next(n){}
 };
+
 template <class itemType>
 class Stack{
     private:
@@ -26,7 +27,9 @@ class Stack{
         void clear();
         void printList() const;
         Stack<itemType> & operator =(const Stack<itemType> & rhs);
-        friend ostream& operator<<(ostream & out, const Stack<itemType>& stack);
+        Stack<itemType> & operator+=(const Stack<itemType> & rhs);
+        bool operator==(const Stack<itemType> & rhs) const;
+        
 };
 template<class itemType>
 Stack<itemType>::Stack():head(nullptr),size(0){}
@@ -116,16 +119,32 @@ Stack<itemType> & Stack<itemType>::operator=(const Stack<itemType> & rhs){
     copyFrom(rhs);
     return *this;
 }
-template<class itemType>        
-ostream& operator<<(ostream &out,const Stack<itemType> stack){  //TODO: SOLVE THIS PROBLEM
-    node<itemType> *p = stack.head;
-    if(!p) return out<<"EMPTY STACK!\n";
-    while(p){
-        out<<p->value<<"\n";
-        p = p->next;
+template<class itemType>
+Stack<itemType> & Stack<itemType>::operator+=(const Stack<itemType> & rhs){
+    if(!head){
+        *this = rhs;
+        return *this;
     }
-    return out;
+    node<itemType> *p = rhs.head;
+    while(p){
+        add(p->value);
+        p=p->next;
+        //! size++; add function already increasing the size!!
+    }
+    return *this;
 }
+template<class itemType>
+bool Stack<itemType>::operator==(const Stack<itemType> & rhs) const{
+    node<itemType> *p1 = head;
+    node<itemType> *p2 = rhs.head;
+    while(p1&&p2){
+        if(p1->value != p2->value) return false;
+        p1 = p1->next;
+        p2 = p2->next;
+    }
+    return true;
+}
+
 int main() {
     // ===== INT STACK =====
     Stack<int> s;
@@ -170,7 +189,21 @@ int main() {
     Stack<string> stringStack2;
     stringStack2 = stringStack;
     cout<<"LIST 2:\n";
-    stringStack2.printList();
-    cout<<stringStack;//TODO: solve the problem in here
+    cout<<"== operator test:\n";
+    if(stringStack == stringStack2){
+        cout<<"equal\n";
+    }
+    else cout<<"not equal\n";
+    cout<<"Check of += operator: \n";
+    Stack<string> stck;
+    stck.add("a");
+    stck.add("b");
+    stck.add("c");
+    stringStack.printList();
+    stringStack += stck;
+    stringStack.printList();
+    cout<<stringStack.getSize();
+    
+    
     return 0;
 }
