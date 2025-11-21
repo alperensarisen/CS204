@@ -2,6 +2,7 @@
 #define CART_H_
 #include "product.h"
 #include <iosfwd>
+using namespace std;
 class cart{
     private:
         struct node
@@ -21,9 +22,9 @@ class cart{
     void clear();
     cart &operator=(const cart& rhs);
     cart &operator+=(const product& product);
-    cart &operator+(const cart rhs) const;
+    cart operator+(const cart rhs) const;
     bool operator==(const cart &rhs) const;
-    int getSize();
-    friend ostream &operator<<(ostream out,const cart& list);
+    int getSize() const;
+    friend ostream &operator<<(ostream& out,const cart& list);
 };
 #endif
