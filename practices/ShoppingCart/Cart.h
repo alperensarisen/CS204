@@ -4,6 +4,7 @@
 #include <iosfwd>
 using namespace std;
 class cart{
+    friend class Iterator;
     private:
         struct node
         {
@@ -20,6 +21,7 @@ class cart{
     
     void copyFrom(const cart& other);
     void clear();
+    void printList() const;
     cart &operator=(const cart& rhs);
     cart &operator+=(const product& product);
     cart operator+(const cart rhs) const;

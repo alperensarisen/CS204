@@ -1,10 +1,10 @@
 #include <iostream>
 #include "Cart.h"
-
+#include "iterator.h"
 using namespace std;
 
 cart::cart():size(0),head(nullptr){}
-cart::cart(const cart& other){copyFrom(other);}
+cart::cart(const cart& other):head(nullptr),size(0){copyFrom(other);}
 cart::~cart(){clear();}
 
 void cart::clear(){
@@ -18,6 +18,12 @@ void cart::clear(){
     }
     size = 0;
     head = nullptr;
+}
+void cart::printList()const{
+    Iterator itr(*this);
+    for(itr.Init();itr.hasMore();itr.next()){
+        cout<<"product: "<<itr.current()<<endl;
+    }
 }
 void cart::copyFrom(const cart& other){
     clear();
@@ -33,10 +39,9 @@ void cart::copyFrom(const cart& other){
         size++;
         p = p->next;
     }
-    
 }
 cart& cart::operator=(const cart &rhs){
-    if(this == &rhs){
+    if(this != &rhs){
         clear();
         copyFrom(rhs);
     }

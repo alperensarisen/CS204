@@ -12,7 +12,7 @@ int main() {
     cart c1;
     c1 += p1;
     c1 += p2;
-
+    c1.printList();
     cout << "Cart c1:\n";
     cout << c1 << endl;
 
@@ -31,5 +31,8 @@ int main() {
     cart c3 = c1 + c2;
     cout << "Cart c3 (c1 + c2):\n";
     cout << c3 << endl;
+    // 6) Test Iterator class
+    cout<<"Test of iterator printList\n";
+    c3.printList();
     return 0;
 }
