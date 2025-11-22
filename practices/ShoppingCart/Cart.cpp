@@ -84,7 +84,8 @@ int cart::getSize()const{
     return size;
 }
 ostream& operator<<(ostream &out, const cart& list){
-    cart::node *p = list.head;
+    typedef cart::node node;
+    node *p = list.head;
     while(p){
         out<<"Name of product: "<<p->data.name<<", Weigh of product: "<<p->data.weigh<<endl;
         p = p->next;
