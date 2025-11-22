@@ -78,6 +78,21 @@ void deleteN(node* &head, int v){
     temp->next = temp->next->next;
     delete dlt;
 }
+void DN(node *head, int v){
+    if(!head) return;
+    if(head->val == v){
+        node *d = head;
+        head = head->next;
+        delete d;
+        return;
+    }
+    node *temp = head;
+    while(temp->next && temp->next->val != v){ temp = temp->next;}
+    if(!temp->next) return;
+    node *dlt = temp->next;
+    temp->next = dlt->next;
+    delete dlt;
+}
 int countCircular(node *head){
     if(!head) return 0;
     node* temp = head->next;
