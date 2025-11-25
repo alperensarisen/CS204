@@ -1,7 +1,7 @@
 #ifndef PLAYLIST_H_
 #define PLAYLIST_H_
 #include "song.h"
-
+#include "Iterator.h"
 #include<iosfwd>
 class playList{
     friend class Iterator;
