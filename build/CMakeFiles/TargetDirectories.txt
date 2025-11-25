@@ -1,0 +1,5 @@
+D:/CS204/build/CMakeFiles/MyQtApp.dir
+D:/CS204/build/CMakeFiles/edit_cache.dir
+D:/CS204/build/CMakeFiles/rebuild_cache.dir
+D:/CS204/build/CMakeFiles/MyQtApp_autogen_timestamp_deps.dir
+D:/CS204/build/CMakeFiles/MyQtApp_autogen.dir
