@@ -48,6 +48,27 @@ Number       2’s-complement
 -6              1010
 -7              1001
 -8              1000  //! There is onw more negative integer
+
+! ------ Decimal Conversion for Negatives ------
+? If 1's complement representation is used:
+    *invert all bits (i.e. negate):  10010010 => 01101101
+    *Then calculate 01101101 => 1 + 4 + 8 + 32 + 64 = 109, Then
+    *10010010 = -109
+? If 2's complement representation is used:
+    *invert all bits (i.e. negate): 1001 0010 => 0110 1101
+    *add 1:                                   => 0110 1110
+    *calculate (0110 1110): 1x64 + 1x32 + 1x8 + 1x4 + 1x2 = 110, Then
+    *10010010 equals to -110
+    ! or instead of this:
+      1       0       0      1      0      0     1      0
+    -128     64       32     16     8      4     2      1
+
+    Calculate it without changing but last one should be negative:
+    Hence: 100100102 = -1x2⁷ + 1x2⁴ + 1x2¹ = -110
+
+    ! use the usual binary to decimal conversion, using at the most 
+    ! significant bit the negative for the coefficient
+
 */
 int main(){
 
