@@ -104,6 +104,14 @@ Number       2’s-complement
 !   LONG:
 ?   You can use it long num = 5; or long int num = 5;
 ?   Range is same with int (32 bits)
+!   LONG LONG:
+?   Can be defined as long long sum; or long long int sum;
+?   Do not use it for codes to be ported to other platforms, it won't work.
+&   Range: -2^63 (2^63) - 1
+!   SHORT:
+?   Can be definde as short sum; or short int sum;
+*   Always 2 bytes => 16 bits, then
+&   Range: -2^15 (2^15) - 1
 */
 
 int main(){
