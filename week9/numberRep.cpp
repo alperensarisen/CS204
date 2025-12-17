@@ -80,6 +80,10 @@ Number       2’s-complement
 &   ch = -25;  //valid
 &   ch = 135;  //out of range, but not a syntax error. Compiler gives a warning
 
+?   The bit representation of 135 in 32 bits = 11111111  11111111 11111111 10000111
+?   But according to 2's complement representation it is equal to -121, thus
+?   cout<<ch;  will show -121.
+
 !   UNSIGNED CHAR:
 &   unsigned char ch;
 &   ch = 200;  //valid; the ASCII character with code 200
@@ -87,7 +91,21 @@ Number       2’s-complement
 
 ?   -25 is out of range but can be represented in 2's complement as 11100111 in 
 ?   binary and the unsigned interpretation of this bit string is 231.
+
+!   A NOTE:
+?   Example: 4-bit to 8-bit
+*   0010  
+*   1010  -> 0000 0010 (both has decimal value 2)-> 1111 1010 (both has decimal value -6 in 2's complement)
+
+!   INT:
+?   Visual Studio fixed it to 4 bytes: thus, in CS204 wecan assume that int always uses 4 bytes.
+&   Range:
+*   32 bits(ourcase): -2^31. . . (2^31)-1 è-2,147,483,648 . . . 2,147,483,647
+!   LONG:
+?   You can use it long num = 5; or long int num = 5;
+?   Range is same with int (32 bits)
 */
+
 int main(){
 
 }
