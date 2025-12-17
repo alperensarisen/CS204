@@ -112,6 +112,24 @@ Number       2’s-complement
 ?   Can be definde as short sum; or short int sum;
 *   Always 2 bytes => 16 bits, then
 &   Range: -2^15 (2^15) - 1
+
+!   UNSIGNED INTEGER:
+unsigned int myint;
+unsigned short cinekop;     // same as unsigned short int cinekop; 
+unsigned long lufer;        //same as unsigned long int lufer; 
+unsigned long long kofana;  // same as unsigned long long int kofana;
+
+&   In unsigned representation there is no sign bit;  most significant bit is part of the 
+&   magnitude. Thus we do not need 2's complement.
+*   The ranges become:
+?   – 16-bit:    0  to (2^16)-1 (defined in limits.h or climits header file)
+?   – 32-bit:    0  to (2^32)-1 (defined in limits.h or climits header file)
+?   – 64-bit:    0  to (2^64)-1 (defined in limits.h or climits header file)
+
+*   if we assign negative number to unsigned integer variable what will be happend ?
+*   unsigned short num = -25;
+*   according to 2's complement rep. it equals to 1111 1111 1110 0111, then it will be calculated
+*   as a unsigned integer, thus output will be 65511.
 */
 
 int main(){
