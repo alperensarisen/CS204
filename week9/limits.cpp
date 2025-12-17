@@ -17,7 +17,15 @@ int main(){
         cout << "hede" << endl;
     else
         cout << "hodo" << endl;
-    return 0;
+    
 //* We expected to see hede in output but it was hodo, since if expression contains
 //* an unsigned value, signed value will be converted to unsigned.
+    short sht1 = 1000;
+    short sht2 = 1000;
+    cout<<"10000 * 100 = "<<sht1*sht2<<endl;
+    if(sht2< USHRT_MAX / sht1) 
+        cout<<"Not overflow\n";
+    else 
+        cout<<"Overflow occured!\n";
+    return 0;
 }
