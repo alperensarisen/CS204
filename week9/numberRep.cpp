@@ -69,6 +69,24 @@ Number       2’s-complement
     ! use the usual binary to decimal conversion, using at the most 
     ! significant bit the negative for the coefficient
 
+!   ----- Subtraction -----
+    0 011 = +3
+    1 110 = -2
+   +______
+    0 001 -> which is correct
+!   CHAR:
+&   The type char is known to store an ASCII character, but actually it stores a signed one byte integer number 
+&   Therange is   -128  . .  127
+&   ch = -25;  //valid
+&   ch = 135;  //out of range, but not a syntax error. Compiler gives a warning
+
+!   UNSIGNED CHAR:
+&   unsigned char ch;
+&   ch = 200;  //valid; the ASCII character with code 200
+&   ch = -25;  //out of range, but not a syntax error. Compiler gives a warning
+
+?   -25 is out of range but can be represented in 2's complement as 11100111 in 
+?   binary and the unsigned interpretation of this bit string is 231.
 */
 int main(){
 
