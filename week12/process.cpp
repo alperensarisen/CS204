@@ -39,12 +39,30 @@
 #include <iostream>
 #include <thread>
 using namespace std;
-void hello(){
-    cout<<"Hello Thread\n";
+void hello(){               //? aThread starts here
+    cout<<"Hello Thread1\n";
 }
-int main(){
+int main(){                 //? the main thread starts here
     thread aThread(&hello);
-    aThread.join();
+    cout<<"Hello Thread2\n";
+    aThread.detach();
     cout<<"Bye main\n";
     return 0;
 }
+/*
+?   join synchronizes the moment the hello
+?   function returns and the completion of 
+?   all the operations in the new thread.
+?   If the execution have completed before
+?   the current thread continues
+
+!   Detach
+*    Detaches the thread represented by 
+*    the object from the calling thread, 
+*    allowing them to execute 
+*    independently from each other.
+*    Both threads continue without 
+*    blocking nor synchronizing in any 
+*    way. Note that when either one ends 
+*    execution, its resources are released.
+*/
