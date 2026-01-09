@@ -77,9 +77,11 @@ class Pet{
             val = other.val;
             age = other.age;
         }
-        ~Pet(){
+        virtual ~Pet(){
             cout<<"BASE destructor called!\n";
         }
+
+        virtual void speak(){cout<<"hello PET!\n";}
     protected:
         int val;
         int age;
@@ -100,11 +102,28 @@ class Cat: public Pet{
         ~Cat(){
             cout<<"CAT destructor called!\n";
         }
+
+        virtual void speak() override{cout<<"Hello CAT! \n";}
     protected:
         int id;
 };
 int main(){
-    Cat charles(1,2);
-    Cat Garfield(charles);
+/*
+!   Example of object slicing
+    Pet a = Cat();
+    a.speak();
+*/
+/*
+!   Example of polymorphism
+    Pet *a = new Cat();
+    (*a).speak();
+&   or
+    Cat c;
+    Pet &a = c;
+    a.speak();
+*/  
+    Pet *a = new Cat();
+    (*a).speak();
+    delete a;
     return 0;
 }
