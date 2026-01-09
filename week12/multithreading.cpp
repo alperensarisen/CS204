@@ -1,6 +1,8 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <vector>
+#include <atomic> // to prevent race condition
 using namespace std;
 /*void hello(){
     //chrono::seconds dura(2);
@@ -15,7 +17,7 @@ int main(){
     else cout<<"athread is not joinable\n";
     return 0;
 }*/
-void pause_thread(int n){
+/*void pause_thread(int n){
     this_thread::sleep_for(chrono::seconds(n));
     cout<<"thread "<<n<<" joined\n";
 }
@@ -28,5 +30,28 @@ int main(){
     t1.join();
     t2.join();
     cout<<"All threads joined\n";
+    return 0;
+}*/
+struct Counter{
+    atomic<int> value;          //! if it is regular int variable you will get different values
+    Counter():value(0){}        //! atomic makes it thread-safe 
+    void increment(){value++;}
+
+};
+void task(Counter &counter){
+    for(int i = 0; i < 100000; i++){
+        counter.increment();
+    }
+}
+int main(){
+    Counter counter;
+    vector<thread> threads;
+    for(int i = 0; i<5; i++){
+        threads.push_back(thread(task,ref(counter)));
+    }
+    for(auto& thread: threads){
+        thread.join();
+    }
+    cout<<counter.value<<endl;
     return 0;
 }
