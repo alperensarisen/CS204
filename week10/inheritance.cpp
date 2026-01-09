@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string> 
 using namespace std;
-class Pet{  //Supperclass(base class)
+/*class Pet{  //Supperclass(base class)
     public:
         Pet():weight(1),food("Pet Chow"){}
         ~Pet(){}
@@ -48,7 +48,7 @@ int main(){
     fluffy.speak();
     fluffy.eat();
     return 0;
-}
+}*/
 /*
 ?   You can derive a subclass in 3 different ways:
 *       class Rat: public Pet
@@ -63,3 +63,48 @@ int main(){
 
 
 */
+
+class Pet{
+    public:
+        Pet():val(1){
+            cout<<"BASE constructor called!\n";
+        }
+        Pet(int v, int a):val(v),age(a){
+            cout<<"BASE constructor with parameter called!\n";
+        }
+        Pet(const Pet& other){
+            cout<<"BASE ctor called!\n";
+            val = other.val;
+            age = other.age;
+        }
+        ~Pet(){
+            cout<<"BASE destructor called!\n";
+        }
+    protected:
+        int val;
+        int age;
+};
+class Cat: public Pet{
+    public:
+        Cat(){
+            cout<<"CAT constructor called!\n";
+        }
+        Cat(int v, int a):Pet(v,a){
+            cout<<"CAT constructor with parameter called!\n";
+        }
+        Cat(const Cat& other){
+            //firstly base class ctor will be called!
+            cout<<"CAT copyctr called!\n";
+            id = other.id;
+        }
+        ~Cat(){
+            cout<<"CAT destructor called!\n";
+        }
+    protected:
+        int id;
+};
+int main(){
+    Cat charles(1,2);
+    Cat Garfield(charles);
+    return 0;
+}
