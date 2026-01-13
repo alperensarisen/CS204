@@ -14,9 +14,5 @@ int main(){
     myFunction(); //it shows 2
     myFunction(); //it shows 3
     //! Even though the function runs multiple times, count does not reset — it remembers its previous value.
-    int *p = new int;
-    cout<<p<<endl;
-    delete p;
-    cout<<p<<endl;
     return 0;
 }
