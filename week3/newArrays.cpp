@@ -6,6 +6,7 @@ int main(){
 //! square brackets [] after the type:
     typedef int *ptrInt;
     ptrInt p;
-    p = new int[20];
+    p = new int[20];    //? dynamically allocate enough
+    delete [] p;        //? memory for an array of 20 ints.
     return 0;
 }
